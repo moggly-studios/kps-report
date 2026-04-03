@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPS Social Media Report — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --brand: #262261;
+    --brand-mid: #3a3596;
+    --brand-light: #eeedf8;
+    --brand-xlight: #f7f7fc;
+    --accent: #f0a500;
+    --accent-light: #fff8e6;
+    --text: #1a1a2e;
+    --text-muted: #6b6b8a;
+    --text-light: #a0a0bc;
+    --surface: #ffffff;
+    --bg: #f4f4f9;
+    --border: rgba(38,34,97,0.12);
+    --fb: #1877f2;
+    --fb-bg: #eef4ff;
+    --ig: #c13584;
+    --ig-bg: #fdf0f7;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    background: var(--brand);
+    color: white;
+    padding: 60px 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 200px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(240,165,0,0.12);
+  }
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+  }
+  .agency-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.01em;
+  }
+  .agency-tag {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .badge {
+    background: rgba(240,165,0,0.2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 10px;
+  }
+  .cover-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+  }
+  .cover-meta-item label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ─── LAYOUT ─── */
+  .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brand);
+    margin: 40px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── SUMMARY STRIP ─── */
+  .summary-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .summary-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+  }
+  .summary-card .s-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+  }
+  .summary-card .s-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--brand);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .summary-card .s-sub {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+  .summary-card.accent-card {
+    background: var(--brand);
+    border-color: var(--brand);
+  }
+  .summary-card.accent-card .s-label { color: rgba(255,255,255,0.5); }
+  .summary-card.accent-card .s-value { color: white; }
+  .summary-card.accent-card .s-sub { color: rgba(255,255,255,0.45); }
+
+  /* ─── CHART CARDS ─── */
+  .chart-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+  .chart-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .chart-card .chart-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .leg-dot {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  /* ─── BRANCH GRID ─── */
+  .branch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .branch-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: box-shadow 0.2s;
+  }
+  .branch-card:hover { box-shadow: 0 4px 24px rgba(38,34,97,0.08); }
+  .branch-card.featured { grid-column: 1 / -1; }
+
+  .branch-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .branch-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--brand);
+  }
+  .posts-badge {
+    font-size: 11px;
+    background: var(--brand-light);
+    color: var(--brand);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .platform-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .platform-block:last-of-type { border-bottom: none; }
+  .plat-pill {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    min-width: 28px;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+  .fb-pill { background: var(--fb-bg); color: var(--fb); }
+  .ig-pill { background: var(--ig-bg); color: var(--ig); }
+
+  .plat-stats { display: flex; gap: 16px; flex: 1; }
+  .plat-stat .val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .plat-stat .desc { font-size: 11px; color: var(--text-light); }
+
+  .top-post-row {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .top-post-row .tp-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-light);
+    margin-bottom: 2px;
+  }
+  .top-post-row .tp-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .view-link {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--brand);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 4px 12px;
+    border: 1px solid var(--brand-light);
+    border-radius: 20px;
+    background: var(--brand-xlight);
+    transition: background 0.15s;
+  }
+  .view-link:hover { background: var(--brand-light); }
+
+  /* ─── INSIGHTS ─── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .insight-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+  .insight-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .insight-card h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .insight-card p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--brand);
+    padding: 32px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .footer-left {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: white;
+  }
+  .footer-left span { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 300; margin-top: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .footer-right { font-size: 12px; color: rgba(255,255,255,0.35); text-align: right; }
+
+  @media (max-width: 700px) {
+    .cover { padding: 40px 24px 36px; }
+    .cover-title { font-size: 36px; }
+    .summary-strip { grid-template-columns: repeat(2, 1fr); }
+    .branch-grid { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .branch-card.featured { grid-column: 1; }
+    .footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+    .footer-right { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="agency-name">Moggly Design Studio</div>
+      <div class="agency-tag">Digital Marketing &amp; Design</div>
+    </div>
+    <div class="badge">Monthly Report</div>
+  </div>
+  <div class="cover-title">Social Media<br>Performance</div>
+  <div class="cover-sub">KPS Schools — March 2026</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><label>Client</label><span>KPS Schools</span></div>
+    <div class="cover-meta-item"><label>Period</label><span>March 2026</span></div>
+    <div class="cover-meta-item"><label>Platforms</label><span>Facebook &amp; Instagram</span></div>
+    <div class="cover-meta-item"><label>Branches</label><span>7 Locations</span></div>
+    <div class="cover-meta-item"><label>Prepared by</label><span>Moggly Design Studio</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- SUMMARY -->
+  <div class="section-label">Network overview</div>
+  <div class="summary-strip">
+    <div class="summary-card accent-card">
+      <div class="s-label">Total followers</div>
+      <div class="s-value">13,122</div>
+      <div class="s-sub">Across all branches</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-label">Net new followers</div>
+      <div class="s-value">+1,062</div>
+      <div class="s-sub">After unfollows</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-label">Combined reach</div>
+      <div class="s-value">3.03M</div>
+      <div class="s-sub">Facebook + Instagram</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-label">Total posts</div>
+      <div class="s-value">112</div>
+      <div class="s-sub">Across 7 branches</div>
+    </div>
+  </div>
+
+  <!-- REACH CHART -->
+  <div class="section-label">Reach by branch</div>
+  <div class="chart-card">
+    <h3>Total reach — Facebook vs Instagram</h3>
+    <div class="chart-desc">Combined audience reached per branch this month</div>
+    <div class="legend">
+      <span><span class="leg-dot" style="background:#1877f2"></span>Facebook</span>
+      <span><span class="leg-dot" style="background:#c13584"></span>Instagram</span>
+    </div>
+    <div style="position:relative;width:100%;height:280px">
+      <canvas id="reachChart"></canvas>
+    </div>
+  </div>
+
+  <!-- ENGAGEMENT CHART -->
+  <div class="chart-card">
+    <h3>Engagement breakdown — Facebook</h3>
+    <div class="chart-desc">Reactions, comments and shares per branch</div>
+    <div class="legend">
+      <span><span class="leg-dot" style="background:#262261"></span>Reactions</span>
+      <span><span class="leg-dot" style="background:#f0a500"></span>Comments</span>
+      <span><span class="leg-dot" style="background:#1D9E75"></span>Shares</span>
+    </div>
+    <div style="position:relative;width:100%;height:260px">
+      <canvas id="engChart"></canvas>
+    </div>
+  </div>
+
+  <!-- GROWTH CHARTS -->
+  <div class="chart-card">
+    <h3>Month-over-month follower growth — Facebook</h3>
+    <div class="chart-desc">Facebook followers per branch — January → February → March 2026</div>
+    <div class="legend">
+      <span><span class="leg-dot" style="background:#b4b2a9"></span>January</span>
+      <span><span class="leg-dot" style="background:#1877f2"></span>February</span>
+      <span><span class="leg-dot" style="background:#262261"></span>March</span>
+    </div>
+    <div style="position:relative;width:100%;height:260px">
+      <canvas id="growthFbChart"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3>Month-over-month follower growth — Instagram</h3>
+    <div class="chart-desc">Instagram followers per branch — January → February → March 2026</div>
+    <div class="legend">
+      <span><span class="leg-dot" style="background:#b4b2a9"></span>January</span>
+      <span><span class="leg-dot" style="background:#c13584"></span>February</span>
+      <span><span class="leg-dot" style="background:#f0a500"></span>March</span>
+    </div>
+    <div style="position:relative;width:100%;height:260px">
+      <canvas id="growthIgChart"></canvas>
+    </div>
+  </div>
+
+  <!-- BRANCH BREAKDOWN -->
+  <div class="section-label">Branch breakdown</div>
+  <div class="branch-grid">
+
+    <!-- Tulssi -->
+    <div class="branch-card">
+      <div class="branch-top">
+        <div class="branch-name">Tulssi</div>
+        <div class="posts-badge">16 posts</div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill fb-pill">FB</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">1,553</div><div class="desc">followers +21</div></div>
+          <div class="plat-stat"><div class="val">466.4K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">1.1K</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill ig-pill">IG</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">1,091</div><div class="desc">followers +93</div></div>
+          <div class="plat-stat"><div class="val">202K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">489</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div><div class="tp-label">Top post</div><div class="tp-title">Women's Day Celebration</div></div>
+        <a class="view-link" href="https://www.facebook.com/share/p/1E6GWuLZkD/" target="_blank">View →</a>
+      </div>
+    </div>
+
+    <!-- Kachna -->
+    <div class="branch-card">
+      <div class="branch-top">
+        <div class="branch-name">Kachna</div>
+        <div class="posts-badge">23 posts</div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill fb-pill">FB</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">4,146</div><div class="desc">followers +696</div></div>
+          <div class="plat-stat"><div class="val">923.8K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">5K</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill ig-pill">IG</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">724</div><div class="desc">followers +89</div></div>
+          <div class="plat-stat"><div class="val">300K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">662</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div><div class="tp-label">Top post</div><div class="tp-title">Types of Lines — 305K reach</div></div>
+        <a class="view-link" href="https://www.facebook.com/share/r/1N8peG5v6r/" target="_blank">View →</a>
+      </div>
+    </div>
+
+    <!-- Mowa -->
+    <div class="branch-card">
+      <div class="branch-top">
+        <div class="branch-name">Mowa</div>
+        <div class="posts-badge">14 posts</div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill fb-pill">FB</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">643</div><div class="desc">followers +2</div></div>
+          <div class="plat-stat"><div class="val">200.9K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">115</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill ig-pill">IG</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">332</div><div class="desc">followers +51</div></div>
+          <div class="plat-stat"><div class="val">207K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">120</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div><div class="tp-label">Top post</div><div class="tp-title">First Day School</div></div>
+        <a class="view-link" href="https://www.facebook.com/reel/2292524184609227" target="_blank">View →</a>
+      </div>
+    </div>
+
+    <!-- Shankar Nagar -->
+    <div class="branch-card">
+      <div class="branch-top">
+        <div class="branch-name">Shankar Nagar</div>
+        <div class="posts-badge">16 posts</div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill fb-pill">FB</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">624</div><div class="desc">followers +7</div></div>
+          <div class="plat-stat"><div class="val">7.7K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">164</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill ig-pill">IG</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">767</div><div class="desc">followers +91</div></div>
+          <div class="plat-stat"><div class="val">81.9K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">1,081</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div><div class="tp-label">Top post</div><div class="tp-title">Phonics — 4.7K reach</div></div>
+        <a class="view-link" href="https://www.instagram.com/p/DViwIt0DzO8/?hl=en" target="_blank">View →</a>
+      </div>
+    </div>
+
+    <!-- Sunder Nagar -->
+    <div class="branch-card">
+      <div class="branch-top">
+        <div class="branch-name">Sunder Nagar</div>
+        <div class="posts-badge">16 posts</div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill fb-pill">FB</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">205</div><div class="desc">followers +11</div></div>
+          <div class="plat-stat"><div class="val">8.1K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">164</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill ig-pill">IG</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">120</div><div class="desc">followers +9</div></div>
+          <div class="plat-stat"><div class="val">6.2K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">46</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div><div class="tp-label">Top post</div><div class="tp-title">Block Match</div></div>
+        <a class="view-link" href="https://www.facebook.com/reel/4518901198397023" target="_blank">View →</a>
+      </div>
+    </div>
+
+    <!-- Rajendra Nagar -->
+    <div class="branch-card">
+      <div class="branch-top">
+        <div class="branch-name">Rajendra Nagar</div>
+        <div class="posts-badge">13 posts</div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill fb-pill">FB</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">551</div><div class="desc">followers +7</div></div>
+          <div class="plat-stat"><div class="val">6.0K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">126</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="platform-block">
+        <span class="plat-pill ig-pill">IG</span>
+        <div class="plat-stats">
+          <div class="plat-stat"><div class="val">456</div><div class="desc">followers +29</div></div>
+          <div class="plat-stat"><div class="val">30.1K</div><div class="desc">reach</div></div>
+          <div class="plat-stat"><div class="val">252</div><div class="desc">reactions</div></div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div><div class="tp-label">Top post</div><div class="tp-title">Tray Balls — 15.7K reach</div></div>
+        <a class="view-link" href="https://www.instagram.com/p/DVlUWXEjYQi/?hl=en" target="_blank">View →</a>
+      </div>
+    </div>
+
+    <!-- KPS Junior - full width -->
+    <div class="branch-card featured">
+      <div class="branch-top">
+        <div class="branch-name">KPS Junior</div>
+        <div class="posts-badge">14 posts</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px;">
+        <div class="platform-block">
+          <span class="plat-pill fb-pill">FB</span>
+          <div class="plat-stats">
+            <div class="plat-stat"><div class="val">766</div><div class="desc">followers +20</div></div>
+            <div class="plat-stat"><div class="val">16.0K</div><div class="desc">reach</div></div>
+            <div class="plat-stat"><div class="val">309</div><div class="desc">reactions</div></div>
+          </div>
+        </div>
+        <div class="platform-block">
+          <span class="plat-pill ig-pill">IG</span>
+          <div class="plat-stats">
+            <div class="plat-stat"><div class="val">944</div><div class="desc">followers +81</div></div>
+            <div class="plat-stat"><div class="val">89.3K</div><div class="desc">reach</div></div>
+            <div class="plat-stat"><div class="val">706</div><div class="desc">reactions</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div><div class="tp-label">Top post</div><div class="tp-title">Lunch Box — 11.2K reach / 78 engagement</div></div>
+        <a class="view-link" href="https://www.instagram.com/p/DVlTpdIjV4M/?hl=en" target="_blank">View →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KEY INSIGHTS -->
+  <div class="section-label">Key insights</div>
+  <div class="insights-grid">
+    <div class="insight-card">
+      <div class="insight-icon" style="background:#eeedf8;">🏆</div>
+      <h4>Kachna leads the network</h4>
+      <p>Kachna FB added 696 new followers — the highest single-branch growth this month. Their "Types of Lines" reel hit 305K reach, the top performing post across all branches.</p>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:#fff8e6;">📈</div>
+      <h4>Instagram gaining momentum</h4>
+      <p>Shankar Nagar IG saw 1,081 reactions and 1,519 shares — strong signals of viral content. KPS Junior IG added 81 followers with 89.3K reach on just 14 posts.</p>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:#f0faf5;">💡</div>
+      <h4>Opportunity: Sunder Nagar</h4>
+      <p>Sunder Nagar has the smallest following (325 combined) but consistent posting. A focused content push on Instagram could unlock faster follower growth based on current engagement rates.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    Moggly Design Studio
+    <span>Digital Marketing &amp; Creative Agency</span>
+  </div>
+  <div class="footer-right">
+    Prepared for KPS Schools<br>
+    March 2026 &mdash; Confidential
+  </div>
+</div>
+
+<script>
+const branches = ['Tulssi','Kachna','Mowa','Shankar Nagar','Sunder Nagar','Raj. Nagar','KPS Junior'];
+const fontFamily = "'DM Sans', sans-serif";
+const gridColor = 'rgba(38,34,97,0.06)';
+const tickColor = '#6b6b8a';
+
+Chart.defaults.font.family = fontFamily;
+
+new Chart(document.getElementById('reachChart'), {
+  type: 'bar',
+  data: {
+    labels: branches,
+    datasets: [
+      { label: 'Facebook', data: [466400, 923800, 200900, 7700, 8100, 6000, 16000], backgroundColor: '#1877f2', borderRadius: 4 },
+      { label: 'Instagram', data: [202000, 300000, 207000, 81900, 6200, 30100, 89300], backgroundColor: '#c13584', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: tickColor, font: { size: 11 }, autoSkip: false, maxRotation: 30 }, grid: { color: gridColor } },
+      y: { ticks: { color: tickColor, font: { size: 11 }, callback: v => v >= 1000000 ? (v/1000000).toFixed(1)+'M' : v >= 1000 ? (v/1000).toFixed(0)+'K' : v }, grid: { color: gridColor } }
+    }
+  }
+});
+
+new Chart(document.getElementById('engChart'), {
+  type: 'bar',
+  data: {
+    labels: branches,
+    datasets: [
+      { label: 'Reactions', data: [1100, 5000, 115, 164, 164, 126, 309], backgroundColor: '#262261', borderRadius: 4 },
+      { label: 'Comments', data: [30, 44, 1, 1, 2, 1, 6], backgroundColor: '#f0a500', borderRadius: 4 },
+      { label: 'Shares', data: [14, 197, 1, 2, 0, 0, 3], backgroundColor: '#1D9E75', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: tickColor, font: { size: 11 }, autoSkip: false, maxRotation: 30 }, grid: { color: gridColor } },
+      y: { ticks: { color: tickColor, font: { size: 11 } }, grid: { color: gridColor } }
+    }
+  }
+});
+
+const lineOpts = (colors) => ({
+  responsive: true, maintainAspectRatio: false,
+  plugins: { legend: { display: false } },
+  scales: {
+    x: { ticks: { color: tickColor, font: { size: 11 }, autoSkip: false, maxRotation: 30 }, grid: { color: gridColor } },
+    y: { ticks: { color: tickColor, font: { size: 11 } }, grid: { color: gridColor } }
+  }
+});
+
+const mkLine = (color, data) => ({ borderColor: color, backgroundColor: 'transparent', tension: 0.35, pointRadius: 5, pointBackgroundColor: color, data });
+
+new Chart(document.getElementById('growthFbChart'), {
+  type: 'line',
+  data: {
+    labels: branches,
+    datasets: [
+      { label: 'Jan FB', ...mkLine('#b4b2a9', [1525, 2764, 643, 610, 198, 545, 742]) },
+      { label: 'Feb FB', ...mkLine('#1877f2', [1535, 3345, 643, 618, 196, 545, 748]) },
+      { label: 'Mar FB', ...mkLine('#262261', [1553, 4146, 643, 624, 205, 551, 766]) }
+    ]
+  },
+  options: lineOpts()
+});
+
+new Chart(document.getElementById('growthIgChart'), {
+  type: 'line',
+  data: {
+    labels: branches,
+    datasets: [
+      { label: 'Jan IG', ...mkLine('#b4b2a9', [975, 211, 288, 512, 108, 429, 803]) },
+      { label: 'Feb IG', ...mkLine('#c13584', [1016, 473, 288, 685, 113, 436, 870]) },
+      { label: 'Mar IG', ...mkLine('#f0a500', [1091, 724, 332, 767, 120, 456, 944]) }
+    ]
+  },
+  options: lineOpts()
+});
+</script>
+</body>
+</html>
