@@ -87,6 +87,10 @@
   .top-post-row .tp-title { font-size:12px; font-weight:500; color:var(--text); }
   .view-link { font-size:11px; font-weight:600; color:var(--brand); text-decoration:none; white-space:nowrap; padding:4px 12px; border:1px solid var(--brand-light); border-radius:20px; background:var(--brand-xlight); transition:background 0.15s; }
   .view-link:hover { background:var(--brand-light); }
+  .fb-view { background:#eef4ff; border-color:#c5d9f7; color:#1877f2; }
+  .fb-view:hover { background:#d6e8ff; }
+  .ig-view { background:#fdf0f7; border-color:#f0c4e0; color:#c13584; }
+  .ig-view:hover { background:#fbe0f2; }
 
   /* INSIGHTS */
   .insights-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
@@ -238,13 +242,13 @@ const DATA = {
       shares:    [26, 24, 1, 4, 1, 5, 0]
     },
     branches: [
-      { name:'Tulssi',        posts:15, fbF:'1,525', fbFg:'+21', fbR:'252.5K', fbReact:'1.3k',  igF:'975',   igFg:'+34', igR:'269.4K', igReact:'452',  topTitle:"Funtastic Sunday",             topLink:'https://www.facebook.com/share/p/1Aao3XLoZH/', reach:'3,077', eng:'35' },
-      { name:'Kachna',        posts:20, fbF:'2,764', fbFg:'+52', fbR:'76.9K',  fbReact:'810',   igF:'211',   igFg:'+13', igR:'243.4K', igReact:'181',  topTitle:"Brazil Dance",                 topLink:'https://www.facebook.com/share/p/1Aao3XLoZH/', reach:'1,729', eng:'29' },
-      { name:'Mowa',          posts:21, fbF:'643',   fbFg:'+3',  fbR:'4.1K',   fbReact:'453',   igF:'288',   igFg:'+13', igR:'31.1K',  igReact:'130',  topTitle:"Admission Open",               topLink:'https://www.instagram.com/p/DT5IVdREn5s/?hl=en', reach:'10.1k', eng:'38' },
-      { name:'Shankar Nagar', posts:15, fbF:'610',   fbFg:'+6',  fbR:'74.5K',  fbReact:'454',   igF:'512',   igFg:'+32', igR:'185.5K', igReact:'241',  topTitle:"Pick Cones",                   topLink:'https://www.facebook.com/share/r/1AfmDcGuwy/', reach:'6,696', eng:'25' },
-      { name:'Sunder Nagar',  posts:14, fbF:'198',   fbFg:'+2',  fbR:'6.1K',   fbReact:'159',   igF:'108',   igFg:'+5',  igR:'3.7K',   igReact:'37',   topTitle:"Tom and Jerry Pose",           topLink:'https://www.instagram.com/p/DTSgPB-E9kb/?hl=en', reach:'263', eng:'22' },
-      { name:'Rajendra Nagar',posts:20, fbF:'545',   fbFg:'+4',  fbR:'9.9K',   fbReact:'266',   igF:'429',   igFg:'+16', igR:'17.5K',  igReact:'228',  topTitle:"Annual Function",              topLink:'https://www.instagram.com/p/DUQUKuCjVfk/?hl=en', reach:'2,406', eng:'61' },
-      { name:'KPS Junior',    posts:18, fbF:'742',   fbFg:'+26', fbR:'35.5K',  fbReact:'521',   igF:'803',   igFg:'+104',igR:'267.1K', igReact:'2615', topTitle:"Aim",                          topLink:'https://www.instagram.com/p/DUIlOpHERAL/?hl=en', reach:'7,097', eng:'137' }
+      { name:'Tulssi',        posts:15, fbF:'1,525', fbFg:'+21', fbR:'252.5K', fbReact:'1.3k',  igF:'975',   igFg:'+34',  igR:'269.4K', igReact:'452',  fbTopTitle:'Funtastic Sunday',            fbTopLink:'https://www.facebook.com/share/p/1Aao3XLoZH/',         igTopTitle:'Annual Felicitation',         igTopLink:'https://www.instagram.com/p/DTS3Ju4Ag9H/?img_index=1' },
+      { name:'Kachna',        posts:20, fbF:'2,764', fbFg:'+52', fbR:'76.9K',  fbReact:'810',   igF:'211',   igFg:'+13',  igR:'243.4K', igReact:'181',  fbTopTitle:'Brazil Dance',                fbTopLink:'https://www.facebook.com/share/p/1Aao3XLoZH/',         igTopTitle:'Republic Day',                igTopLink:'https://www.instagram.com/p/DT9dZXJDyRI/' },
+      { name:'Mowa',          posts:21, fbF:'643',   fbFg:'+3',  fbR:'4.1K',   fbReact:'453',   igF:'288',   igFg:'+13',  igR:'31.1K',  igReact:'130',  fbTopTitle:'Picnic Day',                  fbTopLink:'https://www.facebook.com/share/p/1KBqEUFibm/',         igTopTitle:'Admission Open',              igTopLink:'https://www.instagram.com/p/DT5IVdREn5s/?hl=en' },
+      { name:'Shankar Nagar', posts:15, fbF:'610',   fbFg:'+6',  fbR:'74.5K',  fbReact:'454',   igF:'512',   igFg:'+32',  igR:'185.5K', igReact:'241',  fbTopTitle:'Pick Cones',                  fbTopLink:'https://www.facebook.com/share/r/1AfmDcGuwy/',         igTopTitle:'Tom and Jerry Pose',          igTopLink:'https://www.instagram.com/p/DTP7t3CjD5n/?hl=en' },
+      { name:'Sunder Nagar',  posts:14, fbF:'198',   fbFg:'+2',  fbR:'6.1K',   fbReact:'159',   igF:'108',   igFg:'+5',   igR:'3.7K',   igReact:'37',   fbTopTitle:'Annual Function',             fbTopLink:'https://www.facebook.com/share/r/1AYC3x5J22/',         igTopTitle:'Tom and Jerry Pose',          igTopLink:'https://www.instagram.com/p/DTSgPBE9kb/?hl=en' },
+      { name:'Rajendra Nagar',posts:20, fbF:'545',   fbFg:'+4',  fbR:'9.9K',   fbReact:'266',   igF:'429',   igFg:'+16',  igR:'17.5K',  igReact:'228',  fbTopTitle:'Annual Function',             fbTopLink:'https://www.facebook.com/share/p/1BzN7ryBhF/',         igTopTitle:'Annual Sports Day',           igTopLink:'https://www.instagram.com/p/DUQUKuCjVfk/?hl=en' },
+      { name:'KPS Junior',    posts:18, fbF:'742',   fbFg:'+26', fbR:'35.5K',  fbReact:'521',   igF:'803',   igFg:'+104', igR:'267.1K', igReact:'2615', fbTopTitle:'Track and Field',             fbTopLink:'https://www.facebook.com/share/r/1Bdvc1VSVB/',         igTopTitle:'Aim',                         igTopLink:'https://www.instagram.com/p/DUIlOpHERAL/?hl=en' }
     ],
     insights: [
       { icon:'🏆', bg:'#eeedf8', title:'KPS Junior dominates Instagram', body:'KPS Junior IG hit 267.1K reach with 2,615 reactions — the highest Instagram engagement across all branches in January.' },
@@ -265,13 +269,13 @@ const DATA = {
       shares:    [21, 218, 2, 2, 0, 3, 1]
     },
     branches: [
-      { name:'Tulssi',        posts:10, fbF:'1,535', fbFg:'+12', fbR:'244.8K', fbReact:'775',  igF:'1,016', igFg:'+70',  igR:'122K',  igReact:'478',  topTitle:"JEE Qualifiers",     topLink:'https://www.facebook.com/share/p/1BRwC47HFw/', reach:'6.5k', eng:'56' },
-      { name:'Kachna',        posts:15, fbF:'3,345', fbFg:'+700',fbR:'632.2K', fbReact:'4.1k', igF:'473',   igFg:'+276', igR:'495K',  igReact:'2231', topTitle:"Animal Sound",       topLink:'https://www.facebook.com/reel/903085558898601', reach:'224k', eng:'2.6k' },
-      { name:'Mowa',          posts:13, fbF:'643',   fbFg:'+3',  fbR:'4.6K',   fbReact:'107',  igF:'288',   igFg:'+5',   igR:'12.3K', igReact:'171',  topTitle:"Sports Parade",      topLink:'https://www.facebook.com/reel/921075840860312', reach:'625', eng:'10' },
-      { name:'Shankar Nagar', posts:17, fbF:'618',   fbFg:'+7',  fbR:'53.6K',  fbReact:'423',  igF:'685',   igFg:'+188', igR:'261K',  igReact:'2854', topTitle:"Spot the Kid",       topLink:'https://www.instagram.com/p/DUqF9oMDH12/?hl=en', reach:'151k', eng:'8.8k' },
-      { name:'Sunder Nagar',  posts:8,  fbF:'196',   fbFg:'+1',  fbR:'9.3K',   fbReact:'89',   igF:'113',   igFg:'+7',   igR:'11.8K', igReact:'118',  topTitle:"Teacher Portrait",   topLink:'https://www.instagram.com/p/DU-sxhXjBcR/?hl=en', reach:'2.8k', eng:'69' },
-      { name:'Rajendra Nagar',posts:12, fbF:'545',   fbFg:'+1',  fbR:'8.7K',   fbReact:'223',  igF:'436',   igFg:'+16',  igR:'16.4K', igReact:'274',  topTitle:"Nursery Love",       topLink:'https://www.instagram.com/p/DU29Rr0DaI9/?hl=en', reach:'2.8k', eng:'146' },
-      { name:'KPS Junior',    posts:10, fbF:'748',   fbFg:'+16', fbR:'17K',    fbReact:'285',  igF:'870',   igFg:'+114', igR:'349K',  igReact:'2537', topTitle:"Clay",               topLink:'https://www.instagram.com/p/DUqDaWqjR01/?hl=en', reach:'7.1k', eng:'60' }
+      { name:'Tulssi',        posts:10, fbF:'1,535', fbFg:'+12', fbR:'244.8K', fbReact:'775',  igF:'1,016', igFg:'+70',  igR:'122K',  igReact:'478',  fbTopTitle:'JEE Qualifiers',   fbTopLink:'https://www.facebook.com/share/p/1BRwC47HFw/',        igTopTitle:'Admission',        igTopLink:'https://www.instagram.com/p/DUamT0bjcdE/' },
+      { name:'Kachna',        posts:15, fbF:'3,345', fbFg:'+700',fbR:'632.2K', fbReact:'4.1k', igF:'473',   igFg:'+276', igR:'495K',  igReact:'2231', fbTopTitle:'Animal Sound',     fbTopLink:'https://www.facebook.com/reel/903085558898601',       igTopTitle:'Animal Sound',     igTopLink:'https://www.instagram.com/p/DUYE4z6D7vf/' },
+      { name:'Mowa',          posts:13, fbF:'643',   fbFg:'+3',  fbR:'4.6K',   fbReact:'107',  igF:'288',   igFg:'+5',   igR:'12.3K', igReact:'171',  fbTopTitle:'Sports Parade',    fbTopLink:'https://www.facebook.com/reel/921075840860312',       igTopTitle:'Graduation Day',   igTopLink:'https://www.instagram.com/p/DUiVK_BDEgi/?hl=en' },
+      { name:'Shankar Nagar', posts:17, fbF:'618',   fbFg:'+7',  fbR:'53.6K',  fbReact:'423',  igF:'685',   igFg:'+188', igR:'261K',  igReact:'2854', fbTopTitle:'Spot the Kid',     fbTopLink:'https://www.facebook.com/share/p/14YejaSkaFA/',       igTopTitle:'Spot the Kid',     igTopLink:'https://www.instagram.com/p/DUqF9oMDH12/?hl=en' },
+      { name:'Sunder Nagar',  posts:8,  fbF:'196',   fbFg:'+1',  fbR:'9.3K',   fbReact:'89',   igF:'113',   igFg:'+7',   igR:'11.8K', igReact:'118',  fbTopTitle:'Graduation Day',   fbTopLink:'https://www.facebook.com/reel/1285373493409924',      igTopTitle:'Teacher Portrait', igTopLink:'https://www.instagram.com/p/DU-sxhXjBcR/?hl=en' },
+      { name:'Rajendra Nagar',posts:12, fbF:'545',   fbFg:'+1',  fbR:'8.7K',   fbReact:'223',  igF:'436',   igFg:'+16',  igR:'16.4K', igReact:'274',  fbTopTitle:'Phonics',          fbTopLink:'https://www.facebook.com/reel/1951272279135491',      igTopTitle:'Nursery Love',     igTopLink:'https://www.instagram.com/p/DU29Rr0DaI9/?hl=en' },
+      { name:'KPS Junior',    posts:10, fbF:'748',   fbFg:'+16', fbR:'17K',    fbReact:'285',  igF:'870',   igFg:'+114', igR:'349K',  igReact:'2537', fbTopTitle:'Clay',             fbTopLink:'https://www.facebook.com/reel/2089819145204882',      igTopTitle:'Clay',             igTopLink:'https://www.instagram.com/p/DUqDaWqjR01/?hl=en' }
     ],
     insights: [
       { icon:'🏆', bg:'#eeedf8', title:'Kachna breaks 600K on Facebook', body:'Kachna FB hit 632.2K reach in February with 700 new followers — the strongest single-platform performance this quarter.' },
@@ -292,13 +296,13 @@ const DATA = {
       shares:    [14, 197, 1, 2, 0, 0, 3]
     },
     branches: [
-      { name:'Tulssi',        posts:16, fbF:'1,553', fbFg:'+21', fbR:'466.4K', fbReact:'1.1k', igF:'1,091', igFg:'+93', igR:'202K',   igReact:'489',  topTitle:"Women's Day Celebration", topLink:'https://www.facebook.com/share/p/1E6GWuLZkD/', reach:'3,997', eng:'63' },
-      { name:'Kachna',        posts:23, fbF:'4,146', fbFg:'+696',fbR:'923.8K', fbReact:'5k',   igF:'724',   igFg:'+89', igR:'300K',   igReact:'662',  topTitle:"Types of Lines",          topLink:'https://www.facebook.com/share/r/1N8peG5v6r/', reach:'305K', eng:'1,779' },
-      { name:'Mowa',          posts:14, fbF:'643',   fbFg:'+2',  fbR:'200.9K', fbReact:'115',  igF:'332',   igFg:'+51', igR:'207K',   igReact:'120',  topTitle:"First Day School",        topLink:'https://www.facebook.com/reel/2292524184609227', reach:'845', eng:'33' },
-      { name:'Shankar Nagar', posts:16, fbF:'624',   fbFg:'+7',  fbR:'7.7K',   fbReact:'164',  igF:'767',   igFg:'+91', igR:'81.9K',  igReact:'1,081',topTitle:"Phonics",                 topLink:'https://www.instagram.com/p/DViwIt0DzO8/?hl=en', reach:'4.7k', eng:'190' },
-      { name:'Sunder Nagar',  posts:16, fbF:'205',   fbFg:'+11', fbR:'8.1K',   fbReact:'164',  igF:'120',   igFg:'+9',  igR:'6.2K',   igReact:'46',   topTitle:"Block Match",             topLink:'https://www.facebook.com/reel/4518901198397023', reach:'1,945', eng:'17' },
-      { name:'Rajendra Nagar',posts:13, fbF:'551',   fbFg:'+7',  fbR:'6.0K',   fbReact:'126',  igF:'456',   igFg:'+29', igR:'30.1K',  igReact:'252',  topTitle:"Tray Balls",              topLink:'https://www.instagram.com/p/DVlUWXEjYQi/?hl=en', reach:'15.7K', eng:'566' },
-      { name:'KPS Junior',    posts:14, fbF:'766',   fbFg:'+20', fbR:'16.0K',  fbReact:'309',  igF:'944',   igFg:'+81', igR:'89.3K',  igReact:'706',  topTitle:"Lunch Box",               topLink:'https://www.instagram.com/p/DVlTpdIjV4M/?hl=en', reach:'11.2K', eng:'78' }
+      { name:'Tulssi',        posts:16, fbF:'1,553', fbFg:'+21', fbR:'466.4K', fbReact:'1.1k', igF:'1,091', igFg:'+93', igR:'202K',   igReact:'489',  fbTopTitle:"Women's Day Celebration", fbTopLink:'https://www.facebook.com/share/p/1E6GWuLZkD/',       igTopTitle:'Parent Orientation',      igTopLink:'https://www.instagram.com/p/DWDkIkhgeiP/' },
+      { name:'Kachna',        posts:23, fbF:'4,146', fbFg:'+696',fbR:'923.8K', fbReact:'5k',   igF:'724',   igFg:'+89', igR:'300K',   igReact:'662',  fbTopTitle:'Types of Lines',          fbTopLink:'https://www.facebook.com/share/r/1N8peG5v6r/',       igTopTitle:'Types of Lines',          igTopLink:'https://www.instagram.com/reel/DViowxGj5W3/' },
+      { name:'Mowa',          posts:14, fbF:'643',   fbFg:'+2',  fbR:'200.9K', fbReact:'115',  igF:'332',   igFg:'+51', igR:'207K',   igReact:'120',  fbTopTitle:'First Day School',        fbTopLink:'https://www.facebook.com/reel/2292524184609227',     igTopTitle:'First Day School',        igTopLink:'https://www.instagram.com/reel/DVqdlBOEwOp/?hl=en' },
+      { name:'Shankar Nagar', posts:16, fbF:'624',   fbFg:'+7',  fbR:'7.7K',   fbReact:'164',  igF:'767',   igFg:'+91', igR:'81.9K',  igReact:'1,081',fbTopTitle:'Preposition Place',       fbTopLink:'https://www.facebook.com/share/p/1AoSTgnL3N/',       igTopTitle:'Phonics',                 igTopLink:'https://www.instagram.com/p/DViwIt0DzO8/?hl=en' },
+      { name:'Sunder Nagar',  posts:16, fbF:'205',   fbFg:'+11', fbR:'8.1K',   fbReact:'164',  igF:'120',   igFg:'+9',  igR:'6.2K',   igReact:'46',   fbTopTitle:'Block Match',             fbTopLink:'https://www.facebook.com/reel/4518901198397023',     igTopTitle:'Smiley Day',              igTopLink:'https://www.instagram.com/reel/DWYyj6FKwju/?hl=en' },
+      { name:'Rajendra Nagar',posts:13, fbF:'551',   fbFg:'+7',  fbR:'6.0K',   fbReact:'126',  igF:'456',   igFg:'+29', igR:'30.1K',  igReact:'252',  fbTopTitle:'Parent Orientation',      fbTopLink:'https://www.facebook.com/share/p/1BFDmQgBwy/',       igTopTitle:'Tray Balls',              igTopLink:'https://www.instagram.com/p/DVlUWXEjYQi/?hl=en' },
+      { name:'KPS Junior',    posts:14, fbF:'766',   fbFg:'+20', fbR:'16.0K',  fbReact:'309',  igF:'944',   igFg:'+81', igR:'89.3K',  igReact:'706',  fbTopTitle:'Lunch Box',               fbTopLink:'https://www.facebook.com/reel/1608746467000400',     igTopTitle:'Lunch Box',               igTopLink:'https://www.instagram.com/p/DVlTpdIjV4M/?hl=en' }
     ],
     insights: [
       { icon:'🏆', bg:'#eeedf8', title:'Kachna leads the network', body:'Kachna FB added 696 new followers — highest single-branch growth this month. Their "Types of Lines" reel hit 305K reach, the top performing post across all branches.' },
@@ -319,13 +323,13 @@ const DATA = {
       shares:    [81, 1000, 1, 1, 1, 2, 0]
     },
     branches: [
-      { name:'Tulssi',        posts:14, fbF:'1,568', fbFg:'+22',   fbR:'315.4K', fbReact:'1.6k', igF:'1,159', igFg:'+99',   igR:'220K',  igReact:'454',   topTitle:"KPS Achievers (FB)", topLink:'https://www.facebook.com/share/p/1EG5YB8w5Y/',    reach:'17.7K', eng:'363' },
-      { name:'Kachna',        posts:21, fbF:'7,154', fbFg:'+2.7K', fbR:'1.2M',   fbReact:'13k',  igF:'907',   igFg:'+130',  igR:'240K',  igReact:'534',   topTitle:"Nursery to KG1 (FB) / Nursery to KG1 (IG)", topLink:'https://www.facebook.com/reel/26260706613614417',reach:'89.6K / 1.6K',  eng:'672 / 41' },
-      { name:'Mowa',          posts:13, fbF:'646',   fbFg:'+2',    fbR:'13.3K',  fbReact:'74',   igF:'339',   igFg:'+15',   igR:'26K',   igReact:'323',   topTitle:"Exercise (FB) / Identity (IG)",             topLink:'https://www.facebook.com/share/r/1ENkf17vPv/',   reach:'618 / 8.2K',    eng:'14 / 425' },
-      { name:'Shankar Nagar', posts:15, fbF:'628',   fbFg:'+7',    fbR:'17.6K',  fbReact:'209',  igF:'862',   igFg:'+101',  igR:'110K',  igReact:'1,222', topTitle:"Pinwheel Day (FB & IG)",                    topLink:'https://www.facebook.com/share/p/18Ztic3ubt/',   reach:'1.1K / 2.7K',   eng:'8 / 79' },
-      { name:'Sunder Nagar',  posts:15, fbF:'217',   fbFg:'+13',   fbR:'15.6K',  fbReact:'151',  igF:'1,304', igFg:'+1,304',igR:'2.65M', igReact:'20k',   topTitle:"Fruit Match (FB & IG)",                     topLink:'https://www.instagram.com/p/DXRd3Pyk787/?hl=en', reach:'7.5K / 1.77M',  eng:'32 / 32.2K' },
-      { name:'Rajendra Nagar',posts:20, fbF:'558',   fbFg:'+8',    fbR:'14.6K',  fbReact:'244',  igF:'467',   igFg:'+20',   igR:'23K',   igReact:'240',   topTitle:"Rhymes (FB) / Stick Balls (IG)",            topLink:'https://www.facebook.com/share/r/1BYXvUeUtx/',   reach:'1.1K / 1.9K',   eng:'9 / 44' },
-      { name:'KPS Junior',    posts:14, fbF:'777',   fbFg:'+10',   fbR:'23.5K',  fbReact:'2k',   igF:'1,016', igFg:'+80',   igR:'105K',  igReact:'904',   topTitle:"Bootcamp (FB) / Pinwheel (IG)",             topLink:'https://www.facebook.com/share/p/1DgnopK9J4/',   reach:'13.4K / 10.7K', eng:'1,894 / 402' }
+      { name:'Tulssi',        posts:14, fbF:'1,568', fbFg:'+22',   fbR:'315.4K', fbReact:'1.6k', igF:'1,159', igFg:'+99',   igR:'220K',  igReact:'454',   fbTopTitle:'KPS Achievers',  fbTopLink:'https://www.facebook.com/share/p/1EG5YB8w5Y/',        igTopTitle:null,             igTopLink:null },
+      { name:'Kachna',        posts:21, fbF:'7,154', fbFg:'+2.7K', fbR:'1.2M',   fbReact:'13k',  igF:'907',   igFg:'+130',  igR:'240K',  igReact:'534',   fbTopTitle:'Nursery to KG1', fbTopLink:'https://www.facebook.com/reel/26260706613614417',     igTopTitle:'Nursery to KG1', igTopLink:'https://www.instagram.com/p/DWyYFDqAqkm/' },
+      { name:'Mowa',          posts:13, fbF:'646',   fbFg:'+2',    fbR:'13.3K',  fbReact:'74',   igF:'339',   igFg:'+15',   igR:'26K',   igReact:'323',   fbTopTitle:'Exercise',       fbTopLink:'https://www.facebook.com/share/r/1ENkf17vPv/',        igTopTitle:'Identity',       igTopLink:'https://www.instagram.com/p/DXWmmuAsJ6m/?hl=en' },
+      { name:'Shankar Nagar', posts:15, fbF:'628',   fbFg:'+7',    fbR:'17.6K',  fbReact:'209',  igF:'862',   igFg:'+101',  igR:'110K',  igReact:'1,222', fbTopTitle:'Pinwheel Day',   fbTopLink:'https://www.facebook.com/share/p/18Ztic3ubt/',        igTopTitle:'Pinwheel Day',   igTopLink:'https://www.instagram.com/p/DW8yTpnDGpC/?hl=en' },
+      { name:'Sunder Nagar',  posts:15, fbF:'217',   fbFg:'+13',   fbR:'15.6K',  fbReact:'151',  igF:'1,304', igFg:'+1,304',igR:'2.65M', igReact:'20k',   fbTopTitle:'Fruit Match',    fbTopLink:'https://www.facebook.com/reel/1344073160884474',      igTopTitle:'Fruit Match',    igTopLink:'https://www.instagram.com/p/DXRd3Pyk787/?hl=en' },
+      { name:'Rajendra Nagar',posts:20, fbF:'558',   fbFg:'+8',    fbR:'14.6K',  fbReact:'244',  igF:'467',   igFg:'+20',   igR:'23K',   igReact:'240',   fbTopTitle:'Rhymes',         fbTopLink:'https://www.facebook.com/share/r/1BYXvUeUtx/',        igTopTitle:'Stick Balls',    igTopLink:'https://www.instagram.com/p/DW3p8ozJV0s/?hl=en' },
+      { name:'KPS Junior',    posts:14, fbF:'777',   fbFg:'+10',   fbR:'23.5K',  fbReact:'2k',   igF:'1,016', igFg:'+80',   igR:'105K',  igReact:'904',   fbTopTitle:'Bootcamp',       fbTopLink:'https://www.facebook.com/share/p/1DgnopK9J4/',        igTopTitle:'Pinwheel',       igTopLink:'https://www.instagram.com/p/DXoo9RzDa7c/?hl=en' }
     ],
     insights: [
       { icon:'🏆', bg:'#eeedf8', title:'Sunder Nagar IG goes viral', body:'Sunder Nagar Instagram hit an extraordinary 2.65M reach with 20K reactions — driven by a "Fruit Match" reel that went massively viral, boosting followers by 1,304 in a single month.' },
@@ -404,13 +408,16 @@ function renderBranches(d) {
           <div class="plat-stat"><div class="val">${b.igReact}</div><div class="desc">reactions</div></div>
         </div>
       </div>`;
+    const fbBtn = b.fbTopLink ? `<a class="view-link fb-view" href="${b.fbTopLink}" target="_blank">FB →</a>` : '';
+    const igBtn = b.igTopLink ? `<a class="view-link ig-view" href="${b.igTopLink}" target="_blank">IG →</a>` : '';
+    const topPostTitle = [b.fbTopTitle, b.igTopTitle].filter(Boolean).join(' / ');
     return `
       <div class="branch-card${featured}">
         <div class="branch-top"><div class="branch-name">${b.name}</div><div class="posts-badge">${b.posts} posts</div></div>
         ${featured ? `<div ${innerCols}>${fbBlock}${igBlock}</div>` : `${fbBlock}${igBlock}`}
         <div class="top-post-row">
-          <div><div class="tp-label">Top post</div><div class="tp-title">${b.topTitle} — reach ${b.reach} / eng ${b.eng}</div></div>
-          <a class="view-link" href="${b.topLink}" target="_blank">View →</a>
+          <div><div class="tp-label">Top post</div><div class="tp-title">${topPostTitle}</div></div>
+          <div style="display:flex;gap:6px;">${fbBtn}${igBtn}</div>
         </div>
       </div>`;
   }).join('');
