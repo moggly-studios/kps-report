@@ -132,7 +132,7 @@
     <div class="badge">2026 Report</div>
   </div>
   <div class="cover-title">Social Media<br>Performance</div>
-  <div class="cover-sub">KPS Schools — January to April 2026</div>
+  <div class="cover-sub">KPS Schools — January to May 2026</div>
   <div class="cover-meta">
     <div class="cover-meta-item"><label>Client</label><span>KPS Schools</span></div>
     <div class="cover-meta-item"><label>Year</label><span>2026</span></div>
@@ -148,7 +148,8 @@
   <button class="month-btn" onclick="switchMonth('jan')">January 2026</button>
   <button class="month-btn" onclick="switchMonth('feb')">February 2026</button>
   <button class="month-btn" onclick="switchMonth('mar')">March 2026</button>
-  <button class="month-btn active" onclick="switchMonth('apr')">April 2026</button>
+  <button class="month-btn" onclick="switchMonth('apr')">April 2026</button>
+  <button class="month-btn active" onclick="switchMonth('may')">May 2026</button>
 </div>
 
 <div class="page" id="reportPage">
@@ -188,24 +189,26 @@
 
   <div class="section-label">Follower growth — month over month</div>
   <div class="chart-card">
-    <h3>Facebook follower growth — Jan → Feb → Mar → Apr</h3>
-    <div class="chart-desc">Facebook followers per branch across all four months</div>
+    <h3>Facebook follower growth — Jan → Feb → Mar → Apr → May</h3>
+    <div class="chart-desc">Facebook followers per branch across all five months</div>
     <div class="legend">
       <span><span class="leg-dot" style="background:#b4b2a9"></span>January</span>
       <span><span class="leg-dot" style="background:#1877f2"></span>February</span>
       <span><span class="leg-dot" style="background:#262261"></span>March</span>
       <span><span class="leg-dot" style="background:#f0a500"></span>April</span>
+      <span><span class="leg-dot" style="background:#1D9E75"></span>May</span>
     </div>
     <div style="position:relative;width:100%;height:260px"><canvas id="growthFbChart"></canvas></div>
   </div>
   <div class="chart-card">
-    <h3>Instagram follower growth — Jan → Feb → Mar → Apr</h3>
-    <div class="chart-desc">Instagram followers per branch across all four months</div>
+    <h3>Instagram follower growth — Jan → Feb → Mar → Apr → May</h3>
+    <div class="chart-desc">Instagram followers per branch across all five months</div>
     <div class="legend">
       <span><span class="leg-dot" style="background:#b4b2a9"></span>January</span>
       <span><span class="leg-dot" style="background:#c13584"></span>February</span>
       <span><span class="leg-dot" style="background:#f0a500"></span>March</span>
       <span><span class="leg-dot" style="background:#1D9E75"></span>April</span>
+      <span><span class="leg-dot" style="background:#262261"></span>May</span>
     </div>
     <div style="position:relative;width:100%;height:260px"><canvas id="growthIgChart"></canvas></div>
   </div>
@@ -336,6 +339,33 @@ const DATA = {
       { icon:'📈', bg:'#fff8e6', title:'Kachna FB crosses 1.2M reach', body:'Kachna Facebook reached 1.2M accounts and added 2,700 new followers — the highest single-branch FB growth this quarter, cementing its position as the network\'s top performer.' },
       { icon:'💡', bg:'#f0faf5', title:'KPS Junior IG momentum builds', body:'KPS Junior Instagram crossed 1,000 followers this month with 105K reach and 904 reactions. Short-form content like "Stick Balls" is clearly resonating with the audience.' }
     ]
+  },
+  may: {
+    label: 'May 2026',
+    summary: { followers: '15,601', net: '+1,447', reach: '1.77M', posts: '106' },
+    reach: {
+      fb: [161700, 141100, 2200, 87500, 7700, 5000, 13900],
+      ig: [236000, 41000, 15400, 301000, 897000, 5100, 110000]
+    },
+    eng: {
+      reactions: [360, 1900, 32, 1400, 75, 103, 712],
+      comments:  [20, 17, 0, 1, 0, 0, 5],
+      shares:    [19, 137, 0, 3, 0, 0, 2]
+    },
+    branches: [
+      { name:'Tulssi',        posts:19, fbF:'1,573', fbFg:'+4',  fbR:'161.7K', fbReact:'360',  igF:'1,199', igFg:'+81',  igR:'236K',  igReact:'202',  fbTopTitle:'12th Board Topper',  fbTopLink:'https://www.facebook.com/photo/?fbid=1448841347260862&set=pcb.1448841357260861', igTopTitle:null,               igTopLink:'https://www.instagram.com/p/DYT1yuoE_6B/?img_index=1' },
+      { name:'Kachna',        posts:18, fbF:'7,664', fbFg:'+474',fbR:'141.1K', fbReact:'1.9k', igF:'899',   igFg:'+14',  igR:'41K',   igReact:'263',  fbTopTitle:"Mother's Day Reel",  fbTopLink:'https://www.facebook.com/reel/973493888821086',                               igTopTitle:null,               igTopLink:'https://www.instagram.com/reel/DYHiEhkPaQG/' },
+      { name:'Mowa',          posts:15, fbF:'645',   fbFg:'+1',  fbR:'2.2K',   fbReact:'32',   igF:'352',   igFg:'+18',  igR:'15.4K', igReact:'199',  fbTopTitle:'Watermelon Reel',    fbTopLink:'https://www.facebook.com/reel/1007614565029843/',                             igTopTitle:'Chair Jump',       igTopLink:'https://www.instagram.com/p/DYhRZC2sVvo/?hl=en' },
+      { name:'Shankar Nagar', posts:9,  fbF:'659',   fbFg:'+31', fbR:'87.5K',  fbReact:'1.4k', igF:'940',   igFg:'+103', igR:'301K',  igReact:'1.4k', fbTopTitle:'Creative Drawing',   fbTopLink:'https://www.facebook.com/reel/1581539833313595/',                             igTopTitle:null,               igTopLink:'https://www.instagram.com/p/DYUXEdkPatL/?hl=en' },
+      { name:'Sunder Nagar',  posts:15, fbF:'219',   fbFg:'+3',  fbR:'7.7K',   fbReact:'75',   igF:'1,862', igFg:'+623', igR:'897K',  igReact:'7.6k', fbTopTitle:'Alphabet Snake',     fbTopLink:'https://www.facebook.com/reel/2467654600414343',                             igTopTitle:null,               igTopLink:'https://www.instagram.com/p/DY9lgoTzj0y/?hl=en' },
+      { name:'Rajendra Nagar',posts:17, fbF:'564',   fbFg:'+6',  fbR:'5.0K',   fbReact:'103',  igF:'460',   igFg:'+2',   igR:'5.1K',  igReact:'56',   fbTopTitle:'Zig Zag Train',      fbTopLink:'https://www.facebook.com/reel/1281326986964175',                             igTopTitle:'Palindromic Word', igTopLink:'https://www.instagram.com/p/DYRyrDbJMoz/?hl=en' },
+      { name:'KPS Junior',    posts:13, fbF:'780',   fbFg:'+5',  fbR:'13.9K',  fbReact:'712',  igF:'1,096', igFg:'+82',  igR:'110K',  igReact:'912',  fbTopTitle:'Homonyms',           fbTopLink:'https://www.facebook.com/reel/2034846807464889',                             igTopTitle:'Dice Walk',        igTopLink:'https://www.instagram.com/p/DYrkW-9xtBc/?hl=en' }
+    ],
+    insights: [
+      { icon:'🏆', bg:'#eeedf8', title:'Sunder Nagar IG keeps surging', body:'Sunder Nagar Instagram hit 897K reach with 7,600 reactions and added 623 new followers in May — building on April\'s viral momentum with consistent high-performing content.' },
+      { icon:'📈', bg:'#fff8e6', title:'Shankar Nagar IG breaks 300K', body:'Shankar Nagar Instagram reached 301K with 1,400 reactions on just 9 posts — the highest reach-per-post ratio across the network this month.' },
+      { icon:'💡', bg:'#f0faf5', title:'KPS Junior IG crosses 1,000 followers', body:'KPS Junior Instagram now has 1,096 followers with 110K reach and 912 reactions. Consistent short-form content like "Dice Walk" is driving steady growth.' }
+    ]
   }
 };
 
@@ -344,13 +374,15 @@ const growthFb = {
   jan: [1525, 2764, 643, 610, 198, 545, 742],
   feb: [1535, 3345, 643, 618, 196, 545, 748],
   mar: [1553, 4146, 643, 624, 205, 551, 766],
-  apr: [1568, 7154, 646, 628, 217, 558, 777]
+  apr: [1568, 7154, 646, 628, 217, 558, 777],
+  may: [1573, 7664, 645, 659, 219, 564, 780]
 };
 const growthIg = {
   jan: [975, 211, 288, 512, 108, 429, 803],
   feb: [1016, 473, 288, 685, 113, 436, 870],
   mar: [1091, 724, 332, 767, 120, 456, 944],
-  apr: [1159, 907, 339, 862, 1304, 467, 1016]
+  apr: [1159, 907, 339, 862, 1304, 467, 1016],
+  may: [1199, 899, 352, 940, 1862, 460, 1096]
 };
 
 // Chart instances
@@ -446,17 +478,19 @@ function renderCharts(d) {
     line(growthFb.jan, '#b4b2a9'),
     line(growthFb.feb, '#1877f2'),
     line(growthFb.mar, '#262261'),
-    line(growthFb.apr, '#f0a500')
+    line(growthFb.apr, '#f0a500'),
+    line(growthFb.may, '#1D9E75')
   ]);
   mkChart('growthIgChart', 'line', branches, [
     line(growthIg.jan, '#b4b2a9'),
     line(growthIg.feb, '#c13584'),
     line(growthIg.mar, '#f0a500'),
-    line(growthIg.apr, '#1D9E75')
+    line(growthIg.apr, '#1D9E75'),
+    line(growthIg.may, '#262261')
   ]);
 }
 
-let current = 'apr';
+let current = 'may';
 
 function switchMonth(m) {
   if (m === current) return;
@@ -492,9 +526,9 @@ function switchMonth(m) {
   }, 150);
 }
 
-// Initial render — April
+// Initial render — May
 (function init() {
-  const d = DATA.apr;
+  const d = DATA.may;
   document.getElementById('s-followers').textContent = d.summary.followers;
   document.getElementById('s-net').textContent = d.summary.net;
   document.getElementById('s-reach').textContent = d.summary.reach;
