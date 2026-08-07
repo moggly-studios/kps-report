@@ -99,6 +99,25 @@
   .insight-card h4 { font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px; }
   .insight-card p { font-size:12px; color:var(--text-muted); line-height:1.6; }
 
+  /* AI ANALYSIS */
+  .ai-section { background:white; border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; margin-bottom:16px; }
+  .ai-section-header { display:flex; align-items:center; justify-content:space-between; padding:18px 24px 14px; border-bottom:1px solid var(--border); }
+  .ai-section-title { font-size:15px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:8px; }
+  .ai-badge { font-size:10px; font-weight:600; background:var(--brand-light); color:var(--brand); padding:3px 8px; border-radius:20px; letter-spacing:0.05em; text-transform:uppercase; }
+  .ai-body { padding:20px 24px; min-height:120px; }
+  .ai-loading { display:flex; align-items:center; gap:10px; color:var(--text-muted); font-size:13px; }
+  .ai-spinner { width:16px; height:16px; border:2px solid var(--brand-light); border-top-color:var(--brand); border-radius:50%; animation:spin 0.7s linear infinite; flex-shrink:0; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .ai-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .ai-col h5 { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+  .ai-col h5.worked  { color:#1D9E75; }
+  .ai-col h5.fix     { color:#d97706; }
+  .ai-col h5.next    { color:var(--brand); }
+  .ai-col ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:7px; }
+  .ai-col ul li { font-size:12px; color:var(--text-muted); line-height:1.55; padding-left:14px; position:relative; }
+  .ai-col ul li::before { content:'•'; position:absolute; left:0; color:var(--text-light); }
+  .ai-error { font-size:13px; color:#c0392b; }
+
   /* FOOTER */
   .footer { background:var(--brand); padding:32px 56px; display:flex; justify-content:space-between; align-items:center; margin-top:40px; }
   .footer-left { font-family:'DM Serif Display',serif; font-size:17px; color:white; }
@@ -116,6 +135,7 @@
     .summary-strip { grid-template-columns:repeat(2,1fr); }
     .branch-grid { grid-template-columns:1fr; } .branch-card.featured { grid-column:1; }
     .insights-grid { grid-template-columns:1fr; }
+    .ai-cols { grid-template-columns:1fr; }
     .footer { flex-direction:column; gap:16px; padding:28px 24px; text-align:center; }
     .switcher-bar { padding:0 16px; overflow-x:auto; }
   }
@@ -226,6 +246,20 @@
   <!-- INSIGHTS -->
   <div class="section-label">Key insights</div>
   <div class="insights-grid" id="insightsGrid"></div>
+
+  <!-- AI ANALYSIS -->
+  <div class="section-label">AI strategy analysis</div>
+  <div class="ai-section">
+    <div class="ai-section-header">
+      <div class="ai-section-title">
+        ✦ Monthly analysis &amp; recommendations
+        <span class="ai-badge">AI powered</span>
+      </div>
+    </div>
+    <div class="ai-body" id="aiBody">
+      <div class="ai-loading"><div class="ai-spinner"></div>Generating analysis…</div>
+    </div>
+  </div>
 
 </div>
 
@@ -419,7 +453,7 @@ const DATA = {
       { name:'Shankar Nagar', posts:18, fbF:'715',   fbFg:'+53',  fbR:'91.4K',  fbReact:'457',  igF:'1,290', igFg:'+104', igR:'230K',  igReact:'4.9k', fbTopTitle:'Creative Drawing',           fbTopLink:'https://www.facebook.com/reel/1581539833313595',                                                                                    igTopTitle:'Bouquet',     igTopLink:'https://www.instagram.com/p/DbDfJY9vJ9k/?hl=en' },
       { name:'Sunder Nagar',  posts:11, fbF:'271',   fbFg:'+50',  fbR:'35.7K',  fbReact:'436',  igF:'2,714', igFg:'+363', igR:'303K',  igReact:'3.4k', fbTopTitle:'Balloon Pass',               fbTopLink:'https://www.facebook.com/reel/1537467571363179',                                                                                    igTopTitle:'Catch the Toys',igTopLink:'https://www.instagram.com/p/DaklDczzO-y/?hl=en' },
       { name:'Rajendra Nagar',posts:13, fbF:'886',   fbFg:'+321', fbR:'366.3K', fbReact:'96',   igF:'683',   igFg:'+223', igR:'243K',  igReact:'3.3k', fbTopTitle:'Lunch Time',                 fbTopLink:'https://www.facebook.com/reel/1558102775862329',                                                                                    igTopTitle:null,          igTopLink:'https://www.instagram.com/p/DbGDLPgp0Qj/?hl=en' },
-      { name:'KPS Junior',    posts:7,  fbF:'4,345', fbFg:'+108', fbR:'289.8K', fbReact:'1.1k', igF:'1,333', igFg:'+186', igR:'677K',  igReact:'6.4k', fbTopTitle:'Physics Activity',           fbTopLink:'https://www.facebook.com/reel/1322687160075761/',                                                                                   igTopTitle:'Human Spiral', igTopLink:'https://www.instagram.com/p/DakkiaRgSD7/?hl=en' }
+      { name:'KPS Junior',    posts:7,  fbF:'4,345', fbFg:'+108', fbR:'289.8K', fbReact:'1.1k', igF:'1,333', igFg:'+186', igR:'677K',  igReact:'6.4k', fbTopTitle:'Human Spiral',    fbTopLink:'https://www.facebook.com/reel/1344198147288829',                                                                                   igTopTitle:null,           igTopLink:'https://www.instagram.com/p/DakkiaRgSD7/?hl=en' }
     ],
     insights: [
       { icon:'🏆', bg:'#eeedf8', title:'KPS Junior IG hits 677K reach', body:'KPS Junior Instagram delivered 677K reach and 6,400 reactions on just 7 posts — the highest reach-per-post efficiency in the network this month. Human Spiral was the standout reel.' },
@@ -528,6 +562,74 @@ function renderInsights(d) {
     </div>`).join('');
 }
 
+async function renderAIAnalysis(d) {
+  const aiBody = document.getElementById('aiBody');
+  aiBody.innerHTML = `<div class="ai-loading"><div class="ai-spinner"></div>Generating analysis for ${d.label}…</div>`;
+
+  const branchSummary = d.branches.map(b => `
+- ${b.name}: FB ${b.fbF} followers (${b.fbFg}), reach ${b.fbR}, reactions ${b.fbReact} | IG ${b.igF} followers (${b.igFg}), reach ${b.igR}, reactions ${b.igReact} | Posts: ${b.posts} | Top FB post: ${b.fbTopTitle || 'n/a'} | Top IG post: ${b.igTopTitle || 'n/a'}`).join('');
+
+  const prompt = `You are a social media strategist reviewing the monthly performance report for KPS Schools — a chain of 7 school branches in India. Each branch runs Facebook and Instagram accounts.
+
+Here is the data for ${d.label}:
+Network total followers: ${d.summary.followers}
+Net new followers: ${d.summary.net}
+Combined reach: ${d.summary.reach}
+Total posts: ${d.summary.posts}
+
+Branch breakdown:
+${branchSummary}
+
+Analyse this data and respond ONLY with a valid JSON object — no markdown, no preamble, no explanation outside JSON. Use this exact structure:
+{
+  "worked": ["point 1", "point 2", "point 3"],
+  "fix": ["point 1", "point 2", "point 3"],
+  "next": ["point 1", "point 2", "point 3"]
+}
+
+Rules:
+- "worked": what content formats, branches, or strategies performed well and why
+- "fix": specific branches or patterns that underperformed, with a clear reason
+- "next": 3 concrete, actionable recommendations for the coming month
+- Each point must be 1–2 sentences, specific to the data — no generic advice
+- Reference branch names and actual numbers from the data`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await res.json();
+    const raw = data.content?.find(b => b.type === 'text')?.text || '';
+    const clean = raw.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(clean);
+
+    aiBody.innerHTML = `
+      <div class="ai-cols">
+        <div class="ai-col">
+          <h5 class="worked">✅ What worked</h5>
+          <ul>${parsed.worked.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+        <div class="ai-col">
+          <h5 class="fix">⚠️ What to fix</h5>
+          <ul>${parsed.fix.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+        <div class="ai-col">
+          <h5 class="next">🎯 Next month</h5>
+          <ul>${parsed.next.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+      </div>`;
+  } catch (err) {
+    aiBody.innerHTML = `<div class="ai-error">Could not generate analysis. Please check your connection and try again.</div>`;
+  }
+}
+
 function renderCharts(d) {
   mkChart('reachChart', 'bar', branches,
     [bar(d.reach.fb, '#1877f2'), bar(d.reach.ig, '#c13584')],
@@ -586,6 +688,7 @@ function switchMonth(m) {
     renderBranches(d);
     renderInsights(d);
     renderCharts(d);
+    renderAIAnalysis(d);
 
     page.classList.remove('fading');
     page.style.animation = 'none';
@@ -604,6 +707,7 @@ function switchMonth(m) {
   renderBranches(d);
   renderInsights(d);
   renderCharts(d);
+  renderAIAnalysis(d);
 })();
 </script>
 </body>
